@@ -30,5 +30,15 @@ public class SpringSecurityJwtExampleApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringSecurityJwtExampleApplication.class, args);
     }
+     //for all method disabling cross orgin 
+	 @Bean
+	 public WebMvcConfigurer corsConfigurer() {
+			return new WebMvcConfigurer() {
+				@Override
+				public void addCorsMappings(CorsRegistry registry) {
+					registry.addMapping("/*").allowedHeaders("*").allowedOrigins("*").allowedMethods("*").allowCredentials(true);
+				}
+			};
+		}
 
 }
